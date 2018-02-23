@@ -1,4 +1,4 @@
-php7:
+server:
   build: .
   dockerfile: /etc/docker/dockerfile_php_7
   volumes:
