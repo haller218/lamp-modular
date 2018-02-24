@@ -10,16 +10,16 @@ server:
 #    - "80:80"
 #    - "8080:8080"
   links:
-    - mysql
+    - db
 
 
-mysql:
-  image: mysql
+db:
+  image: bitnami/mariadb
 #  ports:
 #    - "3306:3306"
   environment:
-    - MYSQL_ROOT_PASSWORD=12346
+    - MARIADB_ROOT_PASSWORD=23
     - MYSQL_DATABASE=DATABASE
   volumes:
-    - ./etc/mysql:/docker-entrypoint-initdb.d
-    - ./etc/mysql/db:/var/lib/mysql
+#    - ./etc/mysql:/docker-entrypoint-initdb.d
+#    - ./etc/mysql/db:/opt/bitnami/mariadb/data/
