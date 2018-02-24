@@ -20,6 +20,6 @@ db:
   environment:
     - MARIADB_ROOT_PASSWORD=23
     - MYSQL_DATABASE=DATABASE
-  volumes:
+#  volumes:
 #    - ./etc/mysql:/docker-entrypoint-initdb.d
 #    - ./etc/mysql/db:/opt/bitnami/mariadb/data/
