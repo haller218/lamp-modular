@@ -2,24 +2,31 @@ server:
   build: .
   dockerfile: /etc/docker/dockerfile_php_7
   volumes:
-    - ./sites:/var/www/html
-    - ./etc/php:/usr/local/etc/php
-    - ./etc/apache2/apache2.conf:/etc/apache2/conf-enabled/apache2.conf
-    - ./etc/apache2/hosts.conf:/etc/apache2/sites-enabled/hosts.conf
-#  ports:
-#    - "80:80"
-#    - "8080:8080"
+    - './sites:/var/www/html'
+    - './etc/php/logs:/var/log/server'
+    - './etc/php:/usr/local/etc/php'
+    - './etc/apache2/apache2.conf:/etc/apache2/conf-enabled/apache2.conf'
+    - './etc/apache2/hosts.conf:/etc/apache2/sites-enabled/hosts.conf'
+#    ports:
+#      - '80'
+#     - "80:80"
+#     - "8080:8080"
   links:
-    - db
+    - mariadb
 
-
-db:
-  image: bitnami/mariadb
-#  ports:
-#    - "3306:3306"
+mariadb:
+  image: 'bitnami/mariadb'
+  ports:
+    - '3306'
+#     - '3306:3306'
+  volumes:
+    - './etc/mariadb:/bitnami'
+    - './etc/mariadb:/docker-entrypoint-initdb.d'
+    - './etc/mariadb/logs:/opt/bitnami/mariadb/logs'
+#     - ./etc/mysql/db:/opt/bitnami/mariadb/data/
   environment:
     - MARIADB_ROOT_PASSWORD=23
-    - MYSQL_DATABASE=DATABASE
-#  volumes:
-#    - ./etc/mysql:/docker-entrypoint-initdb.d
-#    - ./etc/mysql/db:/opt/bitnami/mariadb/data/
+    - MARIADB_DATABASE=DATABASE
+#     - ALLOW_EMPTY_PASSWORD=yes
+    - MARIADB_USER=user
+    - MARIADB_PASSWORD=ser
