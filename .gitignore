@@ -2,3 +2,4 @@ sites/*
 npm-debug.log
 etc/mariadb/logs/*
 etc/mariadb/mariadb/*
+etc/php/logs/*
