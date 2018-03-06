@@ -25,7 +25,6 @@ mariadb:
     - './etc/mariadb:/bitnami'
     - './etc/mariadb:/docker-entrypoint-initdb.d'
     - './etc/mariadb/logs:/opt/bitnami/mariadb/logs'
-#    - './etc/mysql/db:/opt/bitnami/mariadb/data/'
   environment:
     - MARIADB_ROOT_PASSWORD=23
     - MARIADB_DATABASE=DATABASE
